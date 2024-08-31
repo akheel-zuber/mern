@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  {{>navbar}}
+  {{>navbar user=user}}
   <section class="vh-100">
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -16,6 +16,9 @@
             alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          {{#if message}}
+          <div class="alert alert-warning">{{message}}</div>
+          {{/if}}
           <form action="/login" method="post">
 
             {{!-- Display the success message --}}
@@ -67,27 +70,27 @@
       const timer = $('#timer')
       let timeleft = 5
       success.css('display', 'block');
-      const countdown = setInterval(()=>{
+      const countdown = setInterval(() => {
         timeleft--;
         timer.text(timeleft);
-        if (timeleft === 0){
+        if (timeleft === 0) {
           success.css('display', 'none');
           clearInterval(countdown)
         }
       }, 1000)
 
       $('#cancelButton').click(() => {
-            event.preventDefault();
-            clearInterval(countdown);
-            success.css('display', 'none');
-        });
+        event.preventDefault();
+        clearInterval(countdown);
+        success.css('display', 'none');
+      });
 
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('status') === 'success'){
-        showSuccessMessage()
-        setTimeout(() => {
+    if (urlParams.get('status') === 'success') {
+      showSuccessMessage()
+      setTimeout(() => {
         urlParams.delete('status'); // Remove the parameter
         const newUrl = `${window.location.pathname}?${urlParams.toString()}`; // Construct the new URL
         window.history.replaceState({}, '', newUrl); // Update the URL without reloading the page

@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" style="height: 80px;" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Have Fun</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,14 +10,34 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        {{/if}}
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>
       </ul>
       <form class="d-flex " role="search">
-        <button class="btn btn-outline-success mx-2" onclick="window.location.href='/login'" type="button">Log in</button>
-        <button class="btn btn-outline-success mx-2" onclick="window.location.href='/register'" type="button">Register</button>
+        {{#if user}}
+        <div class="avatar-circle">
+          <span class="initials">profile</span>
+        </div>
+        <button class="btn btn-outline-success mx-2" onclick="window.location.href='/logout'" type="button">Log
+          out</button>
+        {{else}}
+        <button class="btn btn-outline-success mx-2" onclick="window.location.href='/login'" type="button">Log
+          in</button>
+        <button class="btn btn-outline-success mx-2" onclick="window.location.href='/register'"
+          type="button">Register</button>
+        {{/if}}
       </form>
     </div>
   </div>
 </nav>
+<script>
+  var user = {{user}};
+  console.log(user);
+  
+</script>

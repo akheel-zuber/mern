@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+    <title>Have-Dashboard</title>
+</head>
+<body>
+    {{>navbar user=user}}
+    <h1>Hi Iam <b>{{user.firstName}} {{user.lastName}}</b></h1>
+    <h2>Iam <b>{{user.gender}}</b> </h2>
+    <h3>My mail id is <b>{{user.email}}</b></h3>
+    <h4>Mobile Number is <b>{{user.phone}}</b></h4>
+</body>
+</html>

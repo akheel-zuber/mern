@@ -47,17 +47,24 @@ const studentRegisterSchema = new mongoose.Schema({
     branch:{
         type: String,
         required: true
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
 studentRegisterSchema.methods.generateAuthToken = async function(){
     try {
         const token = jwt.sign({ _id: this._id.toString() }, process.env.SECRET_KEY, { expiresIn: '1h' });
-        console.log("Token generated:", token);
+       // this.tokens = this.tokens.concat({token});
+        // console.log("Token generated:", token);
         return token;
     } catch (err) {
         console.error('Error generating token:', err);
-        throw new Error('Token generation failed');
+        // throw new Error('Token generation failed');
     }
 }
 

@@ -18,3 +18,22 @@
     .card-registration .select-arrow {
     top: 13px;
     }
+
+    .avatar-circle {
+        width: 50px; /* Adjust the size as needed */
+        height: 50px; /* Adjust the size as needed */
+        background-color: #f0f0f0; /* Light background color */
+        border-radius: 50%; /* Makes it a circle */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5px;
+    }
+    
+    .initials {
+        font-size: 30px; /* Adjust the font size as needed */
+        font-family: 'Cursive', sans-serif;
+        color: #333; /* Text color */
+        font-weight: bold;
+    }
+    
