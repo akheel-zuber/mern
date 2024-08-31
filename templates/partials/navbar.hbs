@@ -22,7 +22,7 @@
       <form class="d-flex " role="search">
         {{#if user}}
         <div class="avatar-circle">
-          <span class="initials">profile</span>
+          <span id="initials"></span>
         </div>
         <button class="btn btn-outline-success mx-2" onclick="window.location.href='/logout'" type="button">Log
           out</button>
@@ -37,7 +37,7 @@
   </div>
 </nav>
 <script>
-  var user = {{user}};
-  console.log(user);
-  
+  var p = `${{{user.firstName}}}`;
+  console.log(p);
+  document.getElementById('initials').textContent = p[1].toUpperCase();
 </script>

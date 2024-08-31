@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
         res.set('Cache-Control', 'no-store');
         // Retrieve token from cookies
         const token = req.cookies.jwt;
-        console.log("Token from cookies:", token);
+        // console.log("Token from cookies:", token);
 
         if (!token) {
             return res.redirect('/login?message=Please login to continue');
@@ -18,7 +18,7 @@ const auth = async (req, res, next) => {
         console.log("Verified user:", verifyUser);
 
         // Fetch user from the database
-        const user = await Register.findOne({ _id: verifyUser._id });
+        const user = await Register.findOne({ _id: verifyUser._id },{_id:0});
         console.log("User from database:", user);
 
         if (!user) {

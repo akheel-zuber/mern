@@ -30,10 +30,9 @@
         margin-right: 5px;
     }
     
-    .initials {
-        font-size: 30px; /* Adjust the font size as needed */
+    #initials {
+        font-size: 35px; /* Adjust the font size as needed */
         font-family: 'Cursive', sans-serif;
         color: #333; /* Text color */
-        font-weight: bold;
     }
     

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 try{
-    mongoose.connect("mongodb://localhost:27017/Registration");
+    mongoose.connect(process.env.MONGO);
 }catch(err){
     console.log(err);
 }

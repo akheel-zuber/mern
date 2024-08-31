@@ -30,6 +30,7 @@ app.use(express.urlencoded({extended: true}));
 hbs.registerPartials(partialsPath);
 
 
+
 app.use((req, res, next) => {
     res.set('Cache-Control', 'no-store');  //Not to load pages from cache
     next();
@@ -39,7 +40,7 @@ app.use((req, res, next) => {
 
 app.get("/", auth, (req, res)=>{
     if (req.user) {
-        return res.render('index', { msg: `Happy to have you on board ${req.user.firstName}`, user:JSON.stringify(req.user) });
+        return res.render('index', { msg: `Happy to have you on board ${req.user.firstName}`, user:req.user});
     }
     res.render('index', { msg: "Service Beyond Expectations" });
 })
